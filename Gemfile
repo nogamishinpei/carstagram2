@@ -62,4 +62,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #ここから追加のgem
+#会員登録やいいね機能
 gem 'devise'
+#環境変数化
+gem 'dotenv-rails'
