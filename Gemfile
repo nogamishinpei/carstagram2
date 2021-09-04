@@ -66,3 +66,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 #環境変数化
 gem 'dotenv-rails'
+#レイアウト調整
+gem 'bootstrap','~>4.5'
+gem 'jquery-rails'
