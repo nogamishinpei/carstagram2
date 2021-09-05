@@ -64,8 +64,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #ここから追加のgem
 #会員登録やいいね機能
 gem 'devise'
+
 #環境変数化
 gem 'dotenv-rails'
+group :production do
+  gem 'mysql2' #本番環境用SQL
+
+end
+
 #レイアウト調整
 gem 'bootstrap','~>4.5'
 gem 'jquery-rails'
