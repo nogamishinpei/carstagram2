@@ -1,24 +1,42 @@
-# README
+# Carstagram
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+- 車の画像投稿や、情報共有、車好きの交流の場として活用される事を目指しました。
+- 車好きだけでなく、車の事で困ってる人へのアドバイスできる場などを提供することができる。
+- SNSを通して車好きの界隈を盛り上げることが出来ればと考えました。
+- これまで学習で学んだものを組み合わせひとつのアプリケーションを完成させる事にも力を入れました。
 
-Things you may want to cover:
+### サイトテーマ
+車好きによる車好きのためのSNS
 
-* Ruby version
+### テーマを選んだ理由
+- 車の情報を共有できるサイトはいくつかありますが、それを専門としたSNSが無く
+又、車好き同士が交流できる場も少ないので交流の場になったり、新たな出会いが増えるきっかけに
+なればと思い、今回このテーマを選びました。
 
-* System dependencies
+現状、車の事で困ったときや情報共有したいときに直接生の声が聞ける場が少ないので増やそうと考えました。
+誰に相談したら良いかわからず密かに車の事で困っている人の助けになれればと思います
 
-* Configuration
 
-* Database creation
+### ターゲットユーザ
+- 車好き
+- 車の事で悩んでいるユーザ
 
-* Database initialization
+### 主な利用シーン
+- 車の事で相談事があるが誰に相談すれば良いかわからない時
+- 自分の車の写真を共有したい時
+- 車の事で自分が行き詰った所や苦労した所を共有したい時。
+- 車好き同士の交流の場を作りたいと思った時
 
-* How to run the test suite
+## 設計書
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1BFfFqbVJbsnP-yCNMIbxFNRq4sxpZE1cHdg7ie5KPck/edit?usp=sharing
 
-* ...
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
