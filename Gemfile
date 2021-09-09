@@ -69,9 +69,13 @@ gem 'devise'
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2' #本番環境用SQL
-
 end
 
 #レイアウト調整
 gem 'bootstrap','~>4.5'
 gem 'jquery-rails'
+
+#画像投稿機能
+
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
