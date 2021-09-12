@@ -1,6 +1,6 @@
 <div>
   <%= attachment_image_tag post_image, :image %>
-  <p>投稿ユーザー画像 : <%= image_tag('sample-author1.jpg') %></p>
+  <p>投稿ユーザー画像 : <%= attachment_image_tag post_image.user, :profile_image, :fill, 60, 60, fallback: "no_image.png" %></p>
   <p>タイトル : <%= post_image.post_title %></p>
   <p>説明 : <%= post_image.caption %></p>
   <p>ユーザーネーム : <%= post_image.user.name %></p>
@@ -29,10 +29,10 @@
 </div>
 
 <div>
+  <!--ここからコメント件数、投稿の表示、投稿の削除-->
   <p>コメント件数：<%= @post_image.post_comments.count %></p>
   <%= @post_image.post_comments.each do |post_comment| %>
-  <!--後日ログインユーザーのアイコンに修正-->
-  <p><%=image_tag('sample-author1.jpg') %> </p>
+  <p><%= attachment_image_tag post_image.user, :profile_image, :fill, 60, 60, fallback: "no_image.png" %> </p>
   <%= post_comment.user.name %>
   <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
   <% if post_comment.user == current_user %>
