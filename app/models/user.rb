@@ -11,6 +11,7 @@ class User < ApplicationRecord
          has_many :favorites, dependent: :destroy
 
          #フォローフォロワー機能のアソシエーション
+         has_many :relationships
          has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
          has_many :followers, through: :reverse_of_relationships, source: :follower
          #被フォロー関係を通じて参照→followed_idをフォローしている人
@@ -20,9 +21,9 @@ class User < ApplicationRecord
          #与フォロー関係を通じて参照→follower_idをフォローしている人
 
          attachment :profile_image
-         
-         
-#フォローフォロワー機能のメソッド達         
+
+
+#フォローフォロワー機能のメソッド達
 def follow(user_id)
   relationships.create(followed_id: user_id)
 end
