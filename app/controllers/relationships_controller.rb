@@ -1,6 +1,6 @@
 class RelationshipsController < ApplicationController
   
-  #フォローフォロー解除機能
+  #フォロー、フォロー解除機能
   def create
     current_user.follow(params[:user_id])
     redirect_to request.referer
