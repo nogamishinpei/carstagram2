@@ -1,11 +1,16 @@
 <div>
-  <%= attachment_image_tag post_image, :image %>
-  <p>投稿ユーザー画像 : <%= attachment_image_tag post_image.user, :profile_image, :fill, 60, 60, fallback: "no_image.png" %></p>
-  <p>タイトル : <%= post_image.post_title %></p>
-  <p>説明 : <%= post_image.caption %></p>
-  <p>ユーザーネーム : <%= post_image.user.name %></p>
+  <%= attachment_image_tag @post_image, :image %>
+  <p>投稿ユーザー画像 : <%= attachment_image_tag @post_image.user, :profile_image, :fill, 60, 60, fallback: "no_image.png" %></p>
+  <p>タイトル : <%= @post_image.post_title %></p>
+  <p>説明 : <%= @post_image.caption %></p>
+  <p>ユーザーネーム : <%= @post_image.user.name %></p>
   <p>投稿日時：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
   
+  
+  <!--フォローボタン追加する-->
+  
+  
+  <!--投稿の削除といいね-->
   <% if @post_image.user == current_user %>
   <%= link_to "削除", post_image_path(@post_image), method: :delete %>
   <% end %>
