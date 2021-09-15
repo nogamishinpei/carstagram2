@@ -22,22 +22,24 @@
     <ul class="navbar-nav ml-auto"></ul>
     <% if user_signed_in? %>
     <li class="nav-item mr-4">
-      <%= link_to '投稿フォーム',new_post_image_path, class: 'btn-outline-secondary text-dark' %>
+      <%= link_to '投稿する',new_post_image_path, class: 'btn btn-primary' %>
     </li>
+    
     <li class="nav-item mr-3">
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn-outline-secondary text-dark' %>
+      <%= link_to 'マイページ',user_path(current_user), class: 'btn btn-outline-info' %>
     </li>
+    
     <li class="nav-item mr-3">
-      <%= link_to 'マイページ',user_path(current_user), class: 'btn-outline-secondary text-dark' %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger' %>
     </li>
     <% else %>
 
     <li class="nav-item mr-3">
-      <%= link_to "新規登録", new_user_registration_path, class: 'btn-outline-secondary text-dark' %>
+      <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-primary' %>
     </li>
 
     <li class="nav-item mr-3">
-      <%= link_to "ログイン", new_user_session_path, class: 'btn-outline-secondary text-dark' %>
+      <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-primary' %>
     </li>
     
     
