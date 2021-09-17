@@ -16,27 +16,40 @@
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
           <a class="navbar-brand" href = "/"><span><%= image_tag 'carsta_logo.png', :size => '100x100', class: "rounded-pill" %> </span> </a>
-          
-          
+
+          <!--検索機能-->
+          <% if user_signed_in? %>
+      <%= form_tag(search_path, method: :get) do %>
+
+      <%= text_field_tag (:word) %>
+
+      <%= select_tag 'range' ,options_for_select([['---選択してください---',''], ['ユーザー','1'], ['投稿内容','2']]) %>
+      <%= select_tag 'search', options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"], ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+
+      <%= submit_tag "検索" %>
+      <% end %>
+      <% end %>
+
+
   <div class="collapse navbar-collapse" id="navbar-NavDropdown">
     <ul class="navbar-nav ml-auto"></ul>
     <% if user_signed_in? %>
     <li class="nav-item mr-4">
       <%= link_to '投稿する',new_post_image_path, class: 'btn btn-primary' %>
     </li>
-    
+
     <li class="nav-item mr-3">
       <%= link_to 'マイページ',user_path(current_user), class: 'btn btn-outline-info' %>
     </li>
-    
+
     <li class="nav-item mr-3">
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger' %>
     </li>
-    
+
     <li class="nav-item mr-3">
       <%= link_to "お問い合わせ",new_contact_path, class: 'btn btn-primary' %>
     </li>
-    
+
     <% else %>
 
     <li class="nav-item mr-3">
@@ -46,15 +59,15 @@
     <li class="nav-item mr-3">
       <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-primary' %>
     </li>
-    
+
     <li class="nav-item mr-3">
       <%= link_to "about", homes_about_path, class: 'btn btn-outline-info' %>
     </li>
-    
-    
+
+
     <% end %>
-    
-    
+
+
   </ul>
   </div>
   </div>
@@ -62,8 +75,8 @@
   </header>
 
     <%= yield %>
-    
-    
+
+
     <!--フッター-->
     <footer class="border-top">
       <div class="container mt-4">
@@ -74,6 +87,6 @@
         </div>
       </div>
     </footer>
-    
+
   </body>
 </html>

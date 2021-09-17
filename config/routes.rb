@@ -25,5 +25,8 @@ Rails.application.routes.draw do
   post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
   post 'contacts/back', to: 'contacts#back', as: 'back'
   get 'done', to: 'contacts#done', as: 'done'
+  
+  #検索機能のルーティング
+  get 'search' => 'searchs#search'
 
 end
