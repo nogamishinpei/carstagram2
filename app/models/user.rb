@@ -43,9 +43,9 @@ def self.search(search,word)
     @user = User.where("name LIKE?","#{word}%")
     elsif search == "backward_match"
       @user = User.where("name LIKE?","%#{word}")
-      elsif search == "perfect_match"
+      elsif search == "perfect_match" #完全一致
         @user = User.where(name: word)
-        elsif search == "partial_match"
+        elsif search == "partial_match" #部分一致
           @user = User.where("name LIKE?","%#{word}%")
         else
           @user =User.all
