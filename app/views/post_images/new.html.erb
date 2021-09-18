@@ -8,6 +8,11 @@
 <h4>説明</h4>
 <%= f.text_area :caption %>
 
+<!--タグ付け機能-->
+<h4>タグ</h4>
+<%= f.text_field :tag_ids, class: "form-control", id:'tag_ids',\
+placeholder: "タグを付ける。複数付ける場合は','で区切ってください。" %>
+
 <h4>画像</h4>
 <%= f.attachment_field :image %>
 <%= f.submit '投稿' %>

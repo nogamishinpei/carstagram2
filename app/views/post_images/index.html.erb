@@ -7,9 +7,13 @@
   <%= paginate @post_images %>
 
   <p>投稿ユーザー画像 : <%= attachment_image_tag post_image.user, :profile_image, :fill, 60, 60, fallback: "no_image.png" %></p>
+  
+  <% post_image.tags.each do |tag| %>
+  <p>タグ：<%= tag.name %></p>
+  <% end %>
+  <p>ユーザーネーム : <%= post_image.user.name %></p>
   <p>タイトル : <%= post_image.post_title %></p>
   <p>説明 : <%= post_image.caption %></p>
-  <p>ユーザーネーム : <%= post_image.user.name %></p>
   <p><%= link_to "#{post_image.post_comments.count}コメント", post_image_path(post_image.id) %></p>
 
 </div>
