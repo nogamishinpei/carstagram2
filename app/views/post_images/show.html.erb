@@ -1,9 +1,14 @@
 <div>
-  <p>投稿ユーザー画像 : <%= attachment_image_tag @post_image.user, :profile_image, :fill, 60, 60, fallback: "no_image.png" %></p>
+  <%= link_to user_path(@post_image.user), class:"under_line" do %>
+  <p><%= attachment_image_tag @post_image.user, :profile_image, :fill, 150, 150, fallback: "no_image.png" %></p>
+  <% end %>
   <p>ユーザーネーム : <%= @post_image.user.name %></p>
   <p>タイトル : <%= @post_image.post_title %></p>
   <p>説明 : <%= @post_image.caption %></p>
   <%= attachment_image_tag @post_image, :image %>
+  <% @post_image.tags.each do |tag| %>
+  <p>タグ：<%= tag.name %></p>
+  <% end %>
   <p>投稿日時：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
 
 
@@ -14,7 +19,7 @@
 
   <!--投稿の削除といいね-->
   <% if @post_image.user == current_user %>
-  <%= link_to "削除", post_image_path(@post_image), method: :delete %>
+  <%= link_to "投稿削除", post_image_path(@post_image), method: :delete, class: "btn btn-danger" %>
   <% end %>
 
   <% if @post_image.favorited_by?(current_user) %>
