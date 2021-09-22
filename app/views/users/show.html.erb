@@ -2,8 +2,12 @@
   <h1>＜ユーザー情報＞</h1>
   <h3>ユーザー名：<%= @user.name %></h3>
   <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'png', fallback: "no_image.png" %>
+
   <% if @user.id == current_user.id %>
-  <p><%= link_to"プロフィール編集", edit_user_path(@user) %></p>
+  <%= link_to edit_user_path(@user), class: "btn btn-outline-success" do %>
+  プロフィール編集
+  <i class="fas fa-user-edit"></i>
+  <% end %>
   <% else %>
     <%= render 'relationships/follow_button', user: @user %>
 
@@ -15,9 +19,9 @@
 <div class="border-bottom">
   <div class="offset-md-5">
     <div class="mt-5">
-      
+
       <%= paginate @post_images %>
-      
+
   <%= link_to user_path(post_image.user), class:"under_line" do %>
   <p><%= attachment_image_tag post_image.user, :profile_image, :fill, 100, 100, fallback: "no_image.png" %>
   <% end %>
