@@ -1,5 +1,6 @@
 <div>
-  <h3><%= @user.name %></h3>
+  <h1>＜ユーザー情報＞</h1>
+  <h3>ユーザー名：<%= @user.name %></h3>
   <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'png', fallback: "no_image.png" %>
   <% if @user.id == current_user.id %>
   <p><%= link_to"プロフィール編集", edit_user_path(@user) %></p>
@@ -9,6 +10,7 @@
   <% end %>
 </div>
 
+<h3>＜投稿一覧＞</h3>
 <% @post_images.each do |post_image| %>
 <div class="border-bottom">
   <div class="offset-md-5">
