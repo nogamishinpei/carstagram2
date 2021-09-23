@@ -16,7 +16,7 @@
 
 
 
-  <!--投稿の削除機能-->
+  <!-----------投稿の削除機能--------------->
   <% if @post_image.user == current_user %>
   <%= link_to post_image_path(@post_image), method: :delete, class: "btn btn-danger" do %>
   投稿削除
@@ -24,12 +24,12 @@
   <% end %>
 
   <% end %>
-<!------------------いいね機能------------>
+<!---------------いいね機能（非同期通信）------------>
 <div id="favorite_buttons_<%= @post_image.id %>">
   <%= render "favorites/favorite", {post_image: @post_image} %>
 </div>
 
-  
+
 </div>
 
 <div class="comments">
