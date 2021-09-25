@@ -1,9 +1,8 @@
 class PostImagesController < ApplicationController
-  
   def new
     @post_image = PostImage.new
   end
-  
+
   def create
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
@@ -15,8 +14,6 @@ class PostImagesController < ApplicationController
 
   def index
     @post_images = PostImage.page(params[:page]).reverse_order
-    
-
   end
 
   def show
@@ -29,11 +26,10 @@ class PostImagesController < ApplicationController
     @post_image.destroy
     redirect_to post_images_path
   end
-  
+
   private
-  
+
   def post_image_params
     params.require(:post_image).permit(:post_title, :image, :caption)
   end
-  
 end
