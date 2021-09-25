@@ -25,7 +25,7 @@
           <% if user_signed_in? %>
       <%= form_tag(search_path, method: :get) do %>
 
-      <%= text_field_tag (:word) %>
+      <%= text_field_tag (:word), "", placeholder: "キーワード検索" %>
 
       <%= select_tag 'range' ,options_for_select([['---選択してください---',''], ['ユーザー','1'], ['投稿内容','2']]) %>
       <%= select_tag 'search', options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
