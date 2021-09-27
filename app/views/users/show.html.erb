@@ -1,10 +1,23 @@
-<!--------------評価レビュー機能つける----------------------->
 <div>
   <h1>＜ユーザー情報＞</h1>
   <h3>ユーザー名：<%= @user.name %></h3>
   <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'png', fallback: "no_image.png" %>
   <%= @user.introduction %>
-  
+  <!----------------フォローフォロワー詳細へのボタン--------------------->
+<div class="column">
+  <tr>
+    <th>
+      <%= link_to "Follows：#{@user.followings.count}", user_followings_path(@user.id) %>
+    </th>
+  </tr>
+</div>
+<div class="column">
+  <tr>
+    <th>
+     <%= link_to "Followers: #{@user.followers.count}", user_followers_path(@user.id) %>
+    </th>
+  </tr>
+</div>
   <!--フォローボタンかプロフィール編集か-->
   <div class="row py-3 ml-3">
   <% if @user.id == current_user.id %>
