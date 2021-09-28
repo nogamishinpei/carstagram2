@@ -2,6 +2,12 @@
   <div class="mx-auto">
 
 <h1>投稿ページ</h1>
+<% if @post_image.errors.any? %>
+<%= @post_image.errors.count %>件のエラーがあります入力してください
+<% @post_image.errors.full_messages.each do |message| %>
+<%= message %>
+<% end %>
+<% end %>
 
 <%= form_with model: @post_image, local:true do |f| %>
 
