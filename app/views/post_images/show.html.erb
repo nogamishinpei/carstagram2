@@ -1,56 +1,69 @@
 <div>
-  <%= attachment_image_tag @post_image, :image %>
+  <%= link_to user_path(@post_image.user), class:"under_line" do %>
+  <p><%= attachment_image_tag @post_image.user, :profile_image, :fill, 150, 150, fallback: "no_image.png" %></p>
+  <% end %>
   <p>ユーザーネーム : <%= @post_image.user.name %></p>
-  <p>投稿ユーザー画像 : <%= attachment_image_tag @post_image.user, :profile_image, :fill, 60, 60, fallback: "no_image.png" %></p>
   <p>タイトル : <%= @post_image.post_title %></p>
-  <p>説明 : <%= @post_image.caption %></p>
+  <p>本文 : <%= @post_image.caption %></p>
+  <%= attachment_image_tag @post_image, :image %>
+  <% @post_image.tags.each do |tag| %>
+  <p>タグ：<%= tag.name %></p>
+  <% end %>
   <p>投稿日時：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
 
 
   <!--フォローボタンできそうならここにも追加する-->
 
-  <!--投稿の削除といいね-->
+
+
+  <!--投稿の削除機能-->
   <% if @post_image.user == current_user %>
-  <%= link_to "削除", post_image_path(@post_image), method: :delete %>
+  <%= link_to post_image_path(@post_image), method: :delete, class: "btn btn-danger" do %>
+  投稿削除
+  <i class="far fa-trash-alt"></i>
   <% end %>
 
-  <% if @post_image.favorited_by?(current_user) %>
-  <p>
-    <%= link_to post_image_favorites_path(@post_image), method: :post do %>
-    ♥<%= @post_image.favorites.count %> いいね
-    <% end %>
-  </p>
-  <% else %>
-  <p>
-  <%= link_to post_image_favorites_path(@post_image), method: :post do %>
-  ♡<%= @post_image.favorites.count %> いいね
   <% end %>
-  </p>
-  <% end %>
-
-
+<!------------------いいね機能------------>
+<div id="favorite_buttons_<%= @post_image.id %>">
+  <%= render "favorites/favorite", {post_image: @post_image} %>
+</div>
 
 </div>
 
-<div>
+<div class="comments">
   <!--ここからコメント件数、投稿の表示、投稿の削除-->
   <p>コメント件数：<%= @post_image.post_comments.count %></p>
-  <%= @post_image.post_comments.each do |post_comment| %>
-  <p><%= attachment_image_tag post_image.user, :profile_image, :fill, 60, 60, fallback: "no_image.png" %> </p>
+  
+<% if @error_comment.present? %>
+<div id="error_explanation">
+  <h4><%= @error_comment.errors.count %>件のエラーが発生しました。</h4>
+  <ul>
+    <% @error_comment.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+
+
+  <% @post_image.post_comments.each do |post_comment| %>
+
+  <p><%= attachment_image_tag @post_image.user, :profile_image, :fill, 60, 60, fallback: "no_image.png" %></p>
   <%= post_comment.user.name %>
-  <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+  <%= post_comment.comment %>
   <% if post_comment.user == current_user %>
   <div>
     <%= link_to"削除", post_image_post_comment_path(post_comment.post_image, post_comment),method: :delete %>
   </div>
   <% end %>
-
   <% end %>
 </div>
 
-<div>
+<div class="new-comment">
   <%= form_with(model:[@post_image, @post_comment], local: true) do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder:"コメントをここに" %>
+  <%= f.text_area :comment, :size=>"50x5", placeholder:"コメント入力" %>
   <%= f.submit "送信する" %>
   <% end %>
 </div>

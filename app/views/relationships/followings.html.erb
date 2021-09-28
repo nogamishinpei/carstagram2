@@ -11,7 +11,7 @@
 </thead>
 
 <tbody>
-  <% users.each do |user| %>
+  <% @users.each do |user| %>
   <tr>
     <td><%= user.name %></td>
     <td>フォロー数: <%= user.followings.count %></td>
@@ -19,6 +19,8 @@
   </tr>
 </tbody>
 </table>
+<% end %>
+
 <% else %>
-<p>ユーザーはいません</p>
+<p>フォロー中のユーザーはいません</p>
 <% end %>

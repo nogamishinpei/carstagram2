@@ -8,13 +8,18 @@ class PostImagesController < ApplicationController
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
     tag_list = params[:post_image][:tag_ids].split(',')
-    @post_image.save
+    if @post_image.save
     @post_image.save_tags(tag_list)
     redirect_to post_images_path
+  else
+    render :new
+  end
   end
 
   def index
     @post_images = PostImage.page(params[:page]).reverse_order
+    
+
   end
 
   def show
