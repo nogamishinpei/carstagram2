@@ -9,6 +9,14 @@ class PostImage < ApplicationRecord
   #タグ付けのアソシエーション
   has_many :tag_relationships, dependent: :destroy
   has_many :tags, through: :tag_relationships
+  
+  #バリデーション
+  validates :post_title, presence: true
+  validates :caption, presence: true
+  
+
+
+
 
   #いいね機能、ユーザーidが存在していればtrueなければfalseを
   def favorited_by?(user)
