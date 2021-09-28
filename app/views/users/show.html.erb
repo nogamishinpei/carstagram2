@@ -1,18 +1,18 @@
-<div>
+<div class="ml-2">
   <h1>＜ユーザー情報＞</h1>
   <h3>ユーザー名：<%= @user.name %></h3>
   <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'png', fallback: "no_image.png" %>
   <%= @user.introduction %>
 
   <!----------------フォローフォロワー詳細へのボタン--------------------->
-<div class="column">
+<div class="follow">
   <tr>
     <th>
       <%= link_to "Follows：#{@user.followings.count}", user_followings_path(@user.id) %>
     </th>
   </tr>
 </div>
-<div class="column">
+<div class="follow">
   <tr>
     <th>
      <%= link_to "Followers: #{@user.followers.count}", user_followers_path(@user.id) %>
