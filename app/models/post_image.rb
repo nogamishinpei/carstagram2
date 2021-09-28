@@ -16,8 +16,6 @@ class PostImage < ApplicationRecord
   
 
 
-
-
   #いいね機能、ユーザーidが存在していればtrueなければfalseを
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
