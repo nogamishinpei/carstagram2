@@ -12,10 +12,8 @@ class PostImage < ApplicationRecord
   
   #バリデーション
   validates :post_title, presence: true
-  validates :caption, presence: true
+  validates :caption, presence: true, length: {minimum: 5, maximum: 200}
   
-
-
 
 
   #いいね機能、ユーザーidが存在していればtrueなければfalseを
