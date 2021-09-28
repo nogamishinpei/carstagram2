@@ -4,7 +4,7 @@
   <% end %>
   <p>ユーザーネーム : <%= @post_image.user.name %></p>
   <p>タイトル : <%= @post_image.post_title %></p>
-  <p>説明 : <%= @post_image.caption %></p>
+  <p>本文 : <%= @post_image.caption %></p>
   <%= attachment_image_tag @post_image, :image %>
   <% @post_image.tags.each do |tag| %>
   <p>タグ：<%= tag.name %></p>
