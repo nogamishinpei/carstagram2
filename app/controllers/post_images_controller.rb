@@ -9,10 +9,14 @@ class PostImagesController < ApplicationController
     tag_list = params[:post_image][:tag_ids].split(',')
     if @post_image.save
       @post_image.save_tags(tag_list)
+      tags = Vision.get_image_data(@post_image.image)
+      tags.each do |tag|
+        @post_image.tags.create(name: tag)
+      end
       redirect_to post_images_path
     else
       render :new
-  end
+    end
   end
 
   def index
