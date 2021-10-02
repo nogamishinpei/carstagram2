@@ -46,6 +46,6 @@ class User < ApplicationRecord
       @user = User.where("name LIKE?", "%#{word}%")
     else
       @user = User.all
-          end
-        end
     end
+  end
+end
