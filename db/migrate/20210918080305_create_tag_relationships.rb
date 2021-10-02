@@ -6,7 +6,7 @@ class CreateTagRelationships < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    add_index :tag_relationships,[:post_image_id,:tag_id],unique: true 
-    #uniqueで同じ名前のタグが作れないように
+    add_index :tag_relationships, [:post_image_id, :tag_id], unique: true
+    # uniqueで同じ名前のタグが作れないように
   end
 end
