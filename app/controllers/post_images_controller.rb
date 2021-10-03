@@ -1,25 +1,26 @@
 class PostImagesController < ApplicationController
-  
   def new
     @post_image = PostImage.new
   end
-  
+
   def create
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
     tag_list = params[:post_image][:tag_ids].split(',')
     if @post_image.save
-    @post_image.save_tags(tag_list)
-    redirect_to post_images_path
-  else
-    render :new
-  end
+      @post_image.save_tags(tag_list)
+      tags = Vision.get_image_data(@post_image.image)
+      tags.each do |tag|
+        @post_image.tags.create(name: tag)
+      end
+      redirect_to post_images_path
+    else
+      render :new
+    end
   end
 
   def index
     @post_images = PostImage.page(params[:page]).reverse_order
-    
-
   end
 
   def show
@@ -32,11 +33,10 @@ class PostImagesController < ApplicationController
     @post_image.destroy
     redirect_to post_images_path
   end
-  
+
   private
-  
+
   def post_image_params
     params.require(:post_image).permit(:post_title, :image, :caption)
   end
-  
 end
