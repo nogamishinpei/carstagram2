@@ -13,7 +13,6 @@
     <label for="inputIntroduction"></label>
     <%= f.text_area :introduction, :size=>"50x5" %><br>
 </div>
-
 <!--プロフィール画像の編集-->
 <%= attachment_image_tag @user, :profile_image, :fill, 80, 80, fallback: "no_image.png"%>
 
