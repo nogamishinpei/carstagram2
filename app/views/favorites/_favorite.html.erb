@@ -6,8 +6,8 @@
     <%= @post_image.favorites.count %>
     <% end %>
   </p>
-  <% else %>
   <!--いいねされていないとき-->
+  <% else %>
   <p>
   <%= link_to post_image_favorites_path(@post_image), method: :post, remote: true do %>
   <i class="far fa-heart" style="color: #ff69b4"></i>
