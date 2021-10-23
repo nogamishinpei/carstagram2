@@ -46,8 +46,6 @@
 </div>
 <% end %>
 
-
-
   <% @post_image.post_comments.each do |post_comment| %>
 
   <p><%= attachment_image_tag @post_image.user, :profile_image, :fill, 60, 60, fallback: "no_image.png" %></p>
