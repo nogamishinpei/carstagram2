@@ -1,13 +1,17 @@
 <% if @post_image.favorited_by?(current_user) %>
+ <!--いいねしたとき-->
   <p>
-    <%= link_to post_image_favorites_path(@post_image), method: :delete, remote: true do %> 
-    ♥<%= @post_image.favorites.count %> いいね
+    <%= link_to post_image_favorites_path(@post_image), method: :delete, remote: true do %>
+    <i class="fas fa-heart like-btn" style="color: #ff69b4"></i>
+    <%= @post_image.favorites.count %>
     <% end %>
   </p>
+  <!--いいねされていないとき-->
   <% else %>
   <p>
   <%= link_to post_image_favorites_path(@post_image), method: :post, remote: true do %>
-  ♡<%= @post_image.favorites.count %> いいね
+  <i class="far fa-heart" style="color: #ff69b4"></i>
+  <%= @post_image.favorites.count %>
   <% end %>
   </p>
   <% end %>
