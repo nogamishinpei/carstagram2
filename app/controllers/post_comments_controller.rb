@@ -10,7 +10,7 @@ class PostCommentsController < ApplicationController
       @post_image = PostImage.find(params[:post_image_id])
       @post_comment = PostComment.new
       render "post_images/show"
-  end
+    end
   end
 
   def destroy
