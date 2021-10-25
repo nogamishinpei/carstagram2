@@ -1,4 +1,6 @@
-<h2>フォロー一覧</h2>
+ <% @users.each do |user| %>
+<h2><%= user.name %>さんがフォローしているユーザー一覧</h2>
+<% end %>
 
 <% if @users.exists? %>
 
