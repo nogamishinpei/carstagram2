@@ -4,7 +4,7 @@ class SearchsController < ApplicationController
     search = params[:search]
     word = params[:word]
 
-    if @range == '1'
+    if @range == 'user'
       @user = User.search(search, word)
     else
       @post_image = PostImage.search(search, word)
