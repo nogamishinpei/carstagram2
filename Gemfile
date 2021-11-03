@@ -84,3 +84,6 @@ gem "refile-mini_magick"
 # kaminari---ページング機能
 
 gem 'kaminari', '~>1.2.1'
+
+#日本語化対応
+gem 'rails-i18n', '~> 5.1' 
