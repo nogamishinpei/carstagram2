@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      event:
+        name: 名前
+        passward: パスワード
+    attributes:
+      Post title: タイトル
+      Caption: 本文
