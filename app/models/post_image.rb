@@ -11,7 +11,7 @@ class PostImage < ApplicationRecord
 
   # バリデーション
   validates :post_title, presence: true
-  validates :caption, presence: true, length: { minimum: 5, maximum: 200 }
+  validates :caption, presence: true, length: { minimum: 3, maximum: 200 }
 
   # いいね機能、ユーザーidが存在していればtrueなければfalseを
   def favorited_by?(user)
